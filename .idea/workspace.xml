@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c25b9a7-630b-4e74-8cb4-fb1cf6b8655c" name="Default" comment="" />
+    <list default="true" id="0c25b9a7-630b-4e74-8cb4-fb1cf6b8655c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/company/ClosestPointPreSorted.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +16,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ClosestPoint.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClosestPoint.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/ClosestPoint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-204">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="240">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -25,11 +28,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InputFileGenerator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ClosestPointPreSorted.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/ClosestPointPreSorted.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="115" lean-forward="false" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="115" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InputFileGenerator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/InputFileGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="17" column="48" lean-forward="true" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
+            <state relative-caret-position="285">
+              <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#recordContentToFile#0;class#InputFileGenerator#0" expanded="false" />
@@ -63,12 +78,15 @@
       <find>constructIndexDictionaryBasedOnFirstColumn</find>
       <find>extractPointsFromFile</find>
       <find>findClosestPointIndexesByBruteForce</find>
-      <find>orderPointsBasedOnColumnIndex</find>
       <find>findMedianIndexForColumn</find>
       <find>medianValueForColumn</find>
-      <find>filterPoints</find>
       <find>closestPair</find>
       <find>evaluateNarrowBandForMultiDim</find>
+      <find>filterPoints</find>
+      <find>preorderPointsPerColumn</find>
+      <find>orderPointsBasedOnColumnIndex</find>
+      <find>filter</find>
+      <find>calculateDistanceBetweenPoints</find>
     </findStrings>
     <replaceStrings>
       <replace>double</replace>
@@ -89,6 +107,7 @@
         <option value="$PROJECT_DIR$/src/com/company/Point.java" />
         <option value="$PROJECT_DIR$/src/com/company/InputFileGenerator.java" />
         <option value="$PROJECT_DIR$/src/com/company/ClosestPoint.java" />
+        <option value="$PROJECT_DIR$/src/com/company/ClosestPointPreSorted.java" />
       </list>
     </option>
   </component>
@@ -227,6 +246,26 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="com.company.InputFileGenerator" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="closestPoint" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="ClosestPointPreSorted" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.company.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.company.ClosestPointPreSorted" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
@@ -603,14 +642,16 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
       <item index="1" class="java.lang.String" itemvalue="Application.InputFileGenerator" />
+      <item index="2" class="java.lang.String" itemvalue="Application.ClosestPointPreSorted" />
     </list>
     <recent_temporary>
-      <list size="2">
+      <list size="3">
         <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="1" class="java.lang.String" itemvalue="Application.InputFileGenerator" />
+        <item index="1" class="java.lang.String" itemvalue="Application.ClosestPointPreSorted" />
+        <item index="2" class="java.lang.String" itemvalue="Application.InputFileGenerator" />
       </list>
     </recent_temporary>
   </component>
@@ -630,12 +671,12 @@
       <workItem from="1532445449652" duration="3110000" />
       <workItem from="1532700830277" duration="5410000" />
       <workItem from="1532815688838" duration="7979000" />
-      <workItem from="1532962692130" duration="39301000" />
+      <workItem from="1532962692130" duration="45809000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55800000" />
+    <option name="totallyTimeSpent" value="62308000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -694,19 +735,19 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/ClosestPoint.java</url>
-          <line>274</line>
+          <line>262</line>
           <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/ClosestPoint.java</url>
-          <line>168</line>
+          <line>149</line>
           <properties />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/ClosestPoint.java</url>
-          <line>294</line>
+          <line>288</line>
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
@@ -718,24 +759,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/ClosestPoint.java</url>
-          <line>29</line>
+          <line>285</line>
           <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/ClosestPoint.java</url>
-          <line>233</line>
-          <properties />
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/ClosestPoint.java</url>
-          <line>20</line>
-          <properties />
-          <option name="timeStamp" value="22" />
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="23" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -806,17 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/InputFileGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="17" column="48" lean-forward="true" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#recordContentToFile#0;class#InputFileGenerator#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Point.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -825,12 +843,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/ClosestPoint.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/ClosestPointPreSorted.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="135">
+          <caret line="9" column="115" lean-forward="false" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="115" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/ClosestPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/InputFileGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#recordContentToFile#0;class#InputFileGenerator#0" expanded="false" />
           </folding>
         </state>
       </provider>
