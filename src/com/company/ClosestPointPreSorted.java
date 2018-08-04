@@ -6,9 +6,6 @@ import java.util.*;
 
 public class ClosestPointPreSorted {
 
-    //private static final String FILENAME = "/Users/alidere/Downloads/sample_in_out/sample_input_2_12.tsv";
-    //private static final String FILENAME = "/Users/alidere/closestPoint/sample_inputs/generated_input_2_10000.tsv";
-
     private static String FILENAME = "";
     public static Double minDifference = Double.MAX_VALUE;
     public static Point[] closestPair = new Point[2];

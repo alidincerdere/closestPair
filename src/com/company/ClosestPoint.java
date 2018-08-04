@@ -6,9 +6,6 @@ import java.util.*;
 
 public class ClosestPoint {
 
-    //private static final String FILENAME = "/Users/alidere/Downloads/sample_in_out/sample_input_2_12.tsv";
-    //private static final String FILENAME = "/Users/alidere/closestPoint/sample_inputs/generated_input_2_10000.tsv";
-
     private static String FILENAME = "";
     public static Double minDifference = Double.MAX_VALUE;
     public static Point[] closestPair = new Point[2];
@@ -20,7 +17,7 @@ public class ClosestPoint {
 
         FILENAME = scanner.nextLine();
 
-        while(FILENAME == null || FILENAME.compareTo("") == 0) {
+        while (FILENAME == null || FILENAME.compareTo("") == 0) {
             System.out.println("Please Provide a valid File name:");
 
             FILENAME = scanner.nextLine();
@@ -31,9 +28,9 @@ public class ClosestPoint {
 
         //multidim case
 
-        if(inputPoints != null && inputPoints.size()>0) {
+        if (inputPoints != null && inputPoints.size() > 0) {
             //multidim case
-            if(inputPoints.get(0).getCoordinates().size()>10) {
+            if (inputPoints.get(0).getCoordinates().size() > 10) {
                 //use brute force algorithm to avoid increasing complexity due to high dimensions
                 findClosestPointsByBruteForce(inputPoints);
             } else {
@@ -220,7 +217,7 @@ public class ClosestPoint {
             divideAndConquer(secondHalf, col);
 
             List<Point> pointListInNarrowBand = filterPoints(inputPoints, col);
-            evaluateNarrowBandForMultiDim(pointListInNarrowBand, col+1);
+            evaluateNarrowBandForMultiDim(pointListInNarrowBand, col + 1);
 
         } else {
             findClosestPointsByBruteForce(inputPoints);
@@ -230,7 +227,7 @@ public class ClosestPoint {
 
     public static void evaluateNarrowBandForMultiDim(List<Point> inputPoints, int col) {
 
-        if(inputPoints.size()>0) {
+        if (inputPoints.size() > 0) {
             if (inputPoints.get(0).getCoordinates().size() > 2) {
                 if (col < inputPoints.get(0).getCoordinates().size() - 1) {
                     //continue divide
@@ -243,7 +240,7 @@ public class ClosestPoint {
                 }
 
             } else {
-                if(col<2) {
+                if (col < 2) {
                     orderPointsBasedOnColumnIndex(inputPoints, col);
                     divideAndConquer(inputPoints, col);
                     evaluateNarrowBandFor2D(inputPoints);
