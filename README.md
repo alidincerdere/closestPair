@@ -1,7 +1,7 @@
-# closestPair
+# ClosestPair
 finds closest pair of points among a list of points in a multidimensional space
 
-# Run Program:
+## Run Program:
 
 build java classes (Point.java and ClosestPoint.java) and run
 
@@ -41,11 +41,11 @@ min difference:
 
 As seen above the lines of points are specified
 
-# Input files
+## Input files
 Your input file must contain one point per line and in each line you must specify your coordinates and separate them with space /tabular
 You can use the input files in sample_input folder or create your own input files using InputFileGenerator.java. But you need to specify the output directory in line 62 and 107 before running
 
-# Algorithm and Complexity
+## Algorithm and Complexity
 
 In order to implement finding closest pair solution I used various references describing the algorithm. 
 
@@ -59,13 +59,13 @@ Based on the references the complexity is
 
 O(n(log n)^(d−1))
 
-### Better Solution / What can be improved
+## Better Solution / What can be improved
 The first thing to improve could be that; in the current implementation when the points in narrow band are filtered (points between planes placed next to medians) I sort them for every step. 
 Maybe the points are presorted before starting the algorithm for every dimension and hold separately. Actually I tried this in java class ClosestPointPreSorted.java but this lead worse results in terms of computation time because I was not able to filter while using presorted point lists based on each dimension. Somehow using both filtering and presorted lists in the same time it would improve the speed of the algorithm.
 
 But the main improvement would be understanding and implementing the part "Improving the Algorithm" in first reference or the algorithms defined at theorem 6. 
 
-### Limitations
+## Limitations
 As described in below reference:
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.366.9611&rep=rep1&type=pdf
 as the dimensions increases it has also exponential effect on the time complexity. Based on some tests I put a threshold value in the algorithm for number of dimensions. If the number of dimensions is greater than 10 I use pure brute force algorithm, otherwise I use recursive algorithm.
