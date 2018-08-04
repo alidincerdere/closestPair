@@ -10,11 +10,11 @@ you can either use an IDE to build and run or from terminal.
 If you want to use terminal; Download or clone the source code and navigate there, then:
 
 ``` 
-javac -d "your classpath" ./src/com/company/Point.java
+javac -d <your classpath> ./src/com/company/Point.java
 
-javac -d "your classpath" -classpath <your classpath> ./src/com/company/ClosestPoint.java
+javac -d <your classpath> -classpath <your classpath> ./src/com/company/ClosestPoint.java
 
-java -classpath "your classpath" com.company.ClosestPoint
+java -classpath <your classpath> com.company.ClosestPoint
 ```
 
 if you use IDE then simply compile and run and use IDE terminal
