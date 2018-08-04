@@ -5,7 +5,7 @@ finds closest pair of points among a list of points in a multidimensional space
 
 build java classes (Point.java and ClosestPoint.java) and run
 
-you can either use an ide to build and run or from terminal.
+you can either use an IDE to build and run or from terminal.
 
 If you want to use terminal; Download or clone the source code and navigate there, then:
 
@@ -17,7 +17,7 @@ javac -d "your classpath" -classpath <your classpath> ./src/com/company/ClosestP
 java -classpath "your classpath" com.company.ClosestPoint
 ```
 
-if you use ide then simply compile and run and use ide terminal
+if you use IDE then simply compile and run and use IDE terminal
 
 After you run the program you should give full path of input file
 
