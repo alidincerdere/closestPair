@@ -6,16 +6,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by adere on 01/08/2018.
  */
-public class InputFileGenerator {
+public class InputFileGenerator implements ClosestPairInterface {
 
-    public static final int NUMOFDIMENSIONS = 2;
+    public Integer numofdimensions = 2;
 
-    public static final int NUMOFPOINTS = 10000;
+    public Integer numofpoints = 10000;
 
     public static final Double MAXRANGE = 100000.0d;
 
@@ -23,43 +24,14 @@ public class InputFileGenerator {
 
     public static String content = "";
 
+    public String Directory ="";
 
-    public static void main(String[] args) {
+    public ClosestPoint closestPoint;
 
-        List<Point> generatedPoints = new ArrayList<>();
 
-        Double random;
-        Random r = new Random();
-        for (int i = 0; i < NUMOFPOINTS; i++) {
-            Point p = new Point();
-            List<Double> coordinates = new ArrayList<>();
-            for (int j = 0; j < NUMOFDIMENSIONS; j++) {
-                random = ThreadLocalRandom.current().nextDouble(MINRANGE, MAXRANGE);
-                //random = Double.MIN_VALUE + (Double.MAX_VALUE - Double.MIN_VALUE) * r.nextDouble();
-                //System.out.print(random + " ");
-                coordinates.add(random);
-                content += random + " ";
-            }
-            //System.out.println("");
-            content += "\n";
-            p.setCoordinates(coordinates);
-            p.setOriginalIndex(i + 1);
-            generatedPoints.add(p);
-        }
+    public void recordPointsToInputFile() {
 
-        recordPointsToInputFile();
-        ClosestPoint.findClosestPointsByBruteForce(generatedPoints);
-        System.out.println("Closest pair: ");
-        System.out.println(ClosestPoint.closestPair[0]);
-        System.out.println(ClosestPoint.closestPair[1]);
-        System.out.println("min difference:  ");
-        System.out.println(ClosestPoint.minDifference);
-        recordClosestPairToFile();
-    }
-
-    public static void recordPointsToInputFile() {
-
-        String FILENAME = "/Users/alidere/closestPoint/sample_inputs/generated_input_" + NUMOFDIMENSIONS + "_" + NUMOFPOINTS + ".tsv";
+        String FILENAME = Directory + "/sample_inputs/generated_input_" + numofdimensions + "_" + numofpoints + ".tsv";
         String inputContent = content;
 
         recordContentToFile(FILENAME, inputContent);
@@ -102,11 +74,87 @@ public class InputFileGenerator {
         }
     }
 
-    public static void recordClosestPairToFile() {
+    public void recordClosestPairToFile() {
 
-        String FILENAME = "/Users/alidere/closestPoint/sample_outputs/generated_output_" + NUMOFDIMENSIONS + "_" + NUMOFPOINTS + ".txt";
-        String inputContent = ClosestPoint.closestPair[0].toString() + "\n" + ClosestPoint.closestPair[1].toString();
+        String FILENAME = Directory + "/sample_outputs/generated_output_" + numofdimensions + "_" + numofpoints + ".txt";
+        String inputContent = closestPoint.closestPair[0].toString() + "\n" + closestPoint.closestPair[1].toString();
 
         recordContentToFile(FILENAME, inputContent);
+    }
+
+    @Override
+    public void perform() {
+
+        closestPoint = new ClosestPoint();
+
+        List<Point> generatedPoints = new ArrayList<>();
+
+        Double random;
+        Random r = new Random();
+        for (int i = 0; i < numofpoints; i++) {
+            Point p = new Point();
+            List<Double> coordinates = new ArrayList<>();
+            for (int j = 0; j < numofdimensions; j++) {
+                random = ThreadLocalRandom.current().nextDouble(MINRANGE, MAXRANGE);
+                //random = Double.MIN_VALUE + (Double.MAX_VALUE - Double.MIN_VALUE) * r.nextDouble();
+                //System.out.print(random + " ");
+                coordinates.add(random);
+                content += random + " ";
+            }
+            //System.out.println("");
+            content += "\n";
+            p.setCoordinates(coordinates);
+            p.setOriginalIndex(i + 1);
+            generatedPoints.add(p);
+        }
+
+        recordPointsToInputFile();
+
+        closestPoint.findClosestPointsByBruteForce(generatedPoints);
+        System.out.println("Closest pair: ");
+        System.out.println(closestPoint.closestPair[0]);
+        System.out.println(closestPoint.closestPair[1]);
+        System.out.println("min difference:  ");
+        System.out.println(closestPoint.minDifference);
+        recordClosestPairToFile();
+    }
+
+    @Override
+    public void userInterface() {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please Provide Directory: ");
+
+        Directory = scanner.nextLine();
+
+        while (Directory == null || Directory.compareTo("") == 0) {
+            System.out.println("Please Provide a valid Directory:");
+
+            Directory = scanner.nextLine();
+        }
+
+        System.out.println("Please Provide number of dimensions: ");
+
+        String dimensions = scanner.nextLine();
+        while (dimensions == null || dimensions.compareTo("") == 0) {
+            System.out.println("Please Provide valid number of dimensions:");
+
+            dimensions = scanner.nextLine();
+        }
+
+        numofdimensions = Integer.parseInt(dimensions);
+
+
+        System.out.println("Please Provide number of points: ");
+
+        String points = scanner.nextLine();
+        while (points == null || points.compareTo("") == 0) {
+            System.out.println("Please Provide valid number of points:");
+
+            points = scanner.nextLine();
+        }
+
+        numofpoints = Integer.parseInt(points);
+
     }
 }

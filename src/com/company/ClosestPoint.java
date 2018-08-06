@@ -4,52 +4,13 @@ package com.company;
 import java.io.*;
 import java.util.*;
 
-public class ClosestPoint {
+public class ClosestPoint implements ClosestPairInterface {
 
-    private static String FILENAME = "";
-    public static Double minDifference = Double.MAX_VALUE;
-    public static Point[] closestPair = new Point[2];
+    protected String FILENAME = "";
+    protected Double minDifference = Double.MAX_VALUE;
+    protected Point[] closestPair = new Point[2];
 
-    public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please Provide File name:");
-
-        FILENAME = scanner.nextLine();
-
-        while (FILENAME == null || FILENAME.compareTo("") == 0) {
-            System.out.println("Please Provide a valid File name:");
-
-            FILENAME = scanner.nextLine();
-        }
-
-
-        List<Point> inputPoints = extractPointsFromFile();
-
-        //multidim case
-
-        if (inputPoints != null && inputPoints.size() > 0) {
-            //multidim case
-            if (inputPoints.get(0).getCoordinates().size() > 10) {
-                //use brute force algorithm to avoid increasing complexity due to high dimensions
-                findClosestPointsByBruteForce(inputPoints);
-            } else {
-                //use recursive closest point algorithm
-                evaluateNarrowBandForMultiDim(inputPoints, 0);
-            }
-
-            System.out.println("Closest pair: ");
-            System.out.println(closestPair[0]);
-            System.out.println(closestPair[1]);
-            System.out.println("min difference:  ");
-            System.out.println(minDifference);
-        } else {
-            System.out.println("empty point space");
-        }
-
-    }
-
-    public static List<Point> extractPointsFromFile() {
+    public List<Point> extractPointsFromFile() {
 
         List<Point> points = new ArrayList<>();
         int pointIndex = 1;
@@ -111,9 +72,15 @@ public class ClosestPoint {
 
     }
 
-    public static List<Point> orderPointsBasedOnColumnIndex(
+    public List<Point> orderPointsBasedOnColumnIndex(
             List<Point> inputPoints, int col) {
+        sort(inputPoints,col);
 
+        return inputPoints;
+
+    }
+
+    public void sort(List<Point> inputPoints, int col) {
         Collections.sort(inputPoints, new Comparator<Point>() {
             @Override
             public int compare(Point o1, Point o2) {
@@ -126,13 +93,10 @@ public class ClosestPoint {
                 }
             }
         });
-
-        return inputPoints;
-
     }
 
 
-    public static void findClosestPointsByBruteForce(List<Point> points) {
+    public void findClosestPointsByBruteForce(List<Point> points) {
 
         Double difference;
         for (int i = 0; i < points.size(); i++) {
@@ -206,7 +170,7 @@ public class ClosestPoint {
     }
 
 
-    public static void divideAndConquer(List<Point> inputPoints, int col) {
+    public void divideAndConquer(List<Point> inputPoints, int col) {
 
         if (inputPoints.size() > 3) {
 
@@ -225,7 +189,7 @@ public class ClosestPoint {
 
     }
 
-    public static void evaluateNarrowBandForMultiDim(List<Point> inputPoints, int col) {
+    public void evaluateNarrowBandForMultiDim(List<Point> inputPoints, int col) {
 
         if (inputPoints.size() > 0) {
             if (inputPoints.get(0).getCoordinates().size() > 2) {
@@ -249,11 +213,15 @@ public class ClosestPoint {
         }
     }
 
-    public static void evaluateLatestNarrowBand(List<Point> pointListInNarrowBand) {
+    public void evaluateLatestNarrowBand(List<Point> pointListInNarrowBand) {
         int col = pointListInNarrowBand.get(0).getCoordinates().size() - 1;
 
         orderPointsBasedOnColumnIndex(pointListInNarrowBand, col);
 
+        calculateClosestPairInNarrowBand(pointListInNarrowBand, col);
+    }
+
+    public void calculateClosestPairInNarrowBand(List<Point> pointListInNarrowBand, int col) {
         Double distance;
         for (int i = 0; i < pointListInNarrowBand.size(); i++) {
             for (int j = i + 1; j < pointListInNarrowBand.size(); j++) {
@@ -270,7 +238,7 @@ public class ClosestPoint {
         }
     }
 
-    private static List<Point> filterPoints(List<Point> inputPoints, int col) {
+    public List<Point> filterPoints(List<Point> inputPoints, int col) {
         Double median = medianValueForColumn(inputPoints, col);
 
         Double leftMostX = median - minDifference;
@@ -287,26 +255,53 @@ public class ClosestPoint {
         return pointListInNarrowBand;
     }
 
-    public static void evaluateNarrowBandFor2D(List<Point> inputPoints) {
+    public void evaluateNarrowBandFor2D(List<Point> inputPoints) {
 
         List<Point> pointListInNarrowBand = filterPoints(inputPoints, 0);
 
 
         orderPointsBasedOnColumnIndex(pointListInNarrowBand, 1);
 
-        Double distance;
-        for (int i = 0; i < pointListInNarrowBand.size(); i++) {
-            for (int j = i + 1; j < pointListInNarrowBand.size(); j++) {
-                if (Math.abs(pointListInNarrowBand.get(i).getCoordinates().get(1) - pointListInNarrowBand.get(j).getCoordinates().get(1)) > minDifference) {
-                    break;
-                }
-                distance = calculateDistanceBetweenPoints(pointListInNarrowBand.get(i), pointListInNarrowBand.get(j));
-                if (distance < minDifference) {
-                    minDifference = distance;
-                    closestPair[0] = pointListInNarrowBand.get(i);
-                    closestPair[1] = pointListInNarrowBand.get(j);
-                }
+        calculateClosestPairInNarrowBand(pointListInNarrowBand, 1);
+    }
+
+    @Override
+    public void perform() {
+        List<Point> inputPoints = extractPointsFromFile();
+
+        //multidim case
+
+        if (inputPoints != null && inputPoints.size() > 0) {
+            //multidim case
+            if (inputPoints.get(0).getCoordinates().size() > 10) {
+                //use brute force algorithm to avoid increasing complexity due to high dimensions
+                findClosestPointsByBruteForce(inputPoints);
+            } else {
+                //use recursive closest point algorithm
+                evaluateNarrowBandForMultiDim(inputPoints, 0);
             }
+
+            System.out.println("Closest pair: ");
+            System.out.println(closestPair[0]);
+            System.out.println(closestPair[1]);
+            System.out.println("min difference:  ");
+            System.out.println(minDifference);
+        } else {
+            System.out.println("empty point space");
+        }
+    }
+
+    @Override
+    public void userInterface() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please Provide File name:");
+
+        FILENAME = scanner.nextLine();
+
+        while (FILENAME == null || FILENAME.compareTo("") == 0) {
+            System.out.println("Please Provide a valid File name:");
+
+            FILENAME = scanner.nextLine();
         }
     }
 }
