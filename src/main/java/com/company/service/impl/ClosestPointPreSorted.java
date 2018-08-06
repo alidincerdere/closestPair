@@ -1,7 +1,8 @@
-package com.company;
+package com.company.service.impl;
 
 
-import java.io.*;
+import com.company.model.Point;
+
 import java.util.*;
 
 public class ClosestPointPreSorted extends ClosestPoint {

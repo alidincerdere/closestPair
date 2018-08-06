@@ -14,7 +14,7 @@ javac -d <your classpath> ./src/com/company/Point.java
 
 javac -d <your classpath> -classpath <your classpath> ./src/com/company/ClosestPoint.java
 
-java -classpath <your classpath> com.company.ClosestPoint
+java -classpath <your classpath> com.company.service.impl.ClosestPoint
 ```
 
 if you use IDE then simply compile and run and use IDE terminal

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.service;
 
 public interface ClosestPairInterface {
 

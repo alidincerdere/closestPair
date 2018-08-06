@@ -1,5 +1,10 @@
 package com.company;
 
+import com.company.service.ClosestPairInterface;
+import com.company.service.impl.ClosestPoint;
+import com.company.service.impl.ClosestPointPreSorted;
+import com.company.service.impl.InputFileGenerator;
+
 import java.util.Scanner;
 
 public class Application {

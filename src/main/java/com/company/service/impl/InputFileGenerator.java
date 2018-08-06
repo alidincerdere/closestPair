@@ -1,4 +1,7 @@
-package com.company;
+package com.company.service.impl;
+
+import com.company.service.ClosestPairInterface;
+import com.company.model.Point;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
