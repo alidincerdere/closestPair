@@ -16,6 +16,7 @@ public class ClosestPointTest {
     public static Point p2;
 
     public static String fileName;
+    public static String notFoundFile = "notfound.txt" ;
 
     @BeforeClass
     public static void setup() {
@@ -45,8 +46,8 @@ public class ClosestPointTest {
         closestPoint.setFILENAME(fileName);
         closestPoint.perform();
 
-        assert (closestPoint.getClosestPair() != null);
-        assert (closestPoint.getClosestPair().length == 2);
+        assert (closestPoint.getClosestPair()[0] != null);
+        assert (closestPoint.getClosestPair()[1] != null);
         assert (closestPoint.getClosestPair()[0].equals(p1));
         assert (closestPoint.getClosestPair()[1].equals(p2));
 
@@ -60,11 +61,25 @@ public class ClosestPointTest {
         closestPoint.setFILENAME(fileName);
         closestPoint.perform();
 
-        assert (closestPoint.getClosestPair() != null);
-        assert (closestPoint.getClosestPair().length == 2);
+        assert (closestPoint.getClosestPair()[0] != null);
+        assert (closestPoint.getClosestPair()[1] != null);
         assert (closestPoint.getClosestPair()[0].equals(p1));
         assert (closestPoint.getClosestPair()[1].equals(p2));
 
     }
+
+
+    @Test
+    public void testWhenFileNotFound() {
+        ClosestPoint closestPoint = new ClosestPoint();
+        closestPoint.setFILENAME(notFoundFile);
+        closestPoint.perform();
+
+
+        assert (closestPoint.getClosestPair()[0] == null);
+        assert (closestPoint.getClosestPair()[1] == null);
+    }
+
+
 
 }

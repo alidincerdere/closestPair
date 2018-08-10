@@ -48,9 +48,11 @@ public class ClosestPoint implements ClosestPairInterface {
 
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println(e.getMessage());
         } finally {
 
             try {
@@ -65,7 +67,8 @@ public class ClosestPoint implements ClosestPairInterface {
 
             } catch (IOException ex) {
 
-                ex.printStackTrace();
+                //ex.printStackTrace();
+                System.out.println(ex.getMessage());
 
             }
 
