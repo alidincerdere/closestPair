@@ -35,4 +35,22 @@ public class Point {
         }
         return getOriginalIndex().toString() + ":" + coordinateString;
     }
+
+
+    public boolean equals(Point point) {
+
+        if (point.getCoordinates().size() != this.getCoordinates().size()) {
+            return false;
+        }
+
+        for(int i = 0; i < getCoordinates().size(); i++) {
+            if(!point.getCoordinates().get(i).equals(getCoordinates().get(i))) {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
 }

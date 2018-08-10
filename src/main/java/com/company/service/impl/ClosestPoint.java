@@ -77,7 +77,7 @@ public class ClosestPoint implements ClosestPairInterface {
 
     public List<Point> orderPointsBasedOnColumnIndex(
             List<Point> inputPoints, int col) {
-        sort(inputPoints,col);
+        sort(inputPoints, col);
 
         return inputPoints;
 
@@ -306,5 +306,29 @@ public class ClosestPoint implements ClosestPairInterface {
 
             FILENAME = scanner.nextLine();
         }
+    }
+
+    public String getFILENAME() {
+        return FILENAME;
+    }
+
+    public void setFILENAME(String FILENAME) {
+        this.FILENAME = FILENAME;
+    }
+
+    public Double getMinDifference() {
+        return minDifference;
+    }
+
+    public void setMinDifference(Double minDifference) {
+        this.minDifference = minDifference;
+    }
+
+    public Point[] getClosestPair() {
+        return closestPair;
+    }
+
+    public void setClosestPair(Point[] closestPair) {
+        this.closestPair = closestPair;
     }
 }
