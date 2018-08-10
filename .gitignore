@@ -82,3 +82,15 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
