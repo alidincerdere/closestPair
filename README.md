@@ -3,23 +3,34 @@ finds closest pair of points among a list of points in a multidimensional space
 
 ## Run Program:
 
-build java classes (Point.java and ClosestPoint.java) and run
+java version must be > 1.5
 
-you can either use an IDE to build and run or from terminal.
+clone the source file, then compile and run maven project
+
+you can either use an IDE or terminal to build and run.
 
 If you want to use terminal; Download or clone the source code and navigate there, then:
 
 ``` 
-javac -d <your classpath> ./src/com/company/Point.java
+mvn compile
 
-javac -d <your classpath> -classpath <your classpath> ./src/com/company/ClosestPoint.java
+mvn exec:java -Dexec.mainClass="com.company.Application"
 
-java -classpath <your classpath> com.company.service.impl.ClosestPoint
 ```
 
 if you use IDE then simply compile and run and use IDE terminal
 
-After you run the program you should give full path of input file
+After you run the program you should either choose option 1, 2 or 3:
+
+```
+Please press 1 to apply Closest Pair Algorithm
+Please press 2 to apply Closest Pair Algorithm with Presorted point list
+Please press 3 to generate input files
+
+```
+
+if you chose 1 or 2 you need to provide input file name
+
 
 ```
 Please Provide File name:
@@ -43,7 +54,7 @@ As seen above the lines of points are specified
 
 ## Input files
 Your input file must contain one point per line and in each line you must specify your coordinates and separate them with space /tabular
-You can use the input files in sample_input folder or create your own input files using InputFileGenerator.java. But you need to specify the output directory in line 62 and 107 before running
+You can use the input files in sample_input folder or create your own input files using InputFileGenerator.java. 
 
 ## Algorithm and Complexity
 
