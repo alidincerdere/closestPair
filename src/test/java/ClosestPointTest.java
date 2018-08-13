@@ -21,7 +21,7 @@ public class ClosestPointTest {
     @BeforeClass
     public static void setup() {
 
-        fileName = "/Users/alidere/closestPoint/sample_inputs/test_input.txt";
+        fileName = "sample_inputs/test_input.txt";
 
         p1 = new Point();
         List<Double> coordinates1 = new ArrayList<>();
